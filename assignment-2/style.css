@@ -1,0 +1,58 @@
+.link {
+    text-align: center;
+}
+
+#p1 {
+    font-family: Arial, serif;
+    color: hotpink;
+
+}
+
+#p2 {
+    font-family: Courier, sans-serif;
+    color: pink;
+}
+
+#p3 {
+    font-family: "Corsiva Hebrew", serif;
+    color: lightpink;
+}
+
+.paragraphs {
+    border-width:2px;
+    border-style:solid;
+    border-color:red;
+}
+
+#dog_bread {
+    width: 25%;
+    height: 25%;
+    border: 10px dotted sandybrown;
+    border-radius: 3px;
+}
+
+#embedded-web {
+
+}
+
+img {
+    width: 100%;
+    border-radius: 2%;
+}
+
+
+.column {
+    float: left;
+    border: 2px solid orange;
+    width: 30%;
+    border-radius: 2%;
+    margin: 2px;
+    text-align: center;
+    font-size: 70%;
+}
+
+textarea {
+    width: 50%;
+}
+
+
