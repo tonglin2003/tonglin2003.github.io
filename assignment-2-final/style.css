@@ -56,4 +56,11 @@ textarea {
     width: 50%;
 }
 
+#image1 {
+    filter: hue-rotate(90deg);
+}
+
+#image2 {
+    filter: grayscale(80%);
+}
 
