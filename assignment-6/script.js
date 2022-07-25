@@ -45,13 +45,14 @@ function  convertCelsiusToFahrenheit() {
     }
     else {
         const result = (userInput * (9/5)) +32;
-        const resultReport = `${userInput}°C is ${result}°F. `
+        const resultReport = `${userInput}°C is ${result}°F. `;
         console.log(resultReport);
         return result;
     }
 }
 
 convertCelsiusToFahrenheit();
+console.log("Please ener ' convertCelsiusToFahrenheit() ' if retry.");
 
 console.log("Part C");
 console.log("Please press the buttons on the page.")
