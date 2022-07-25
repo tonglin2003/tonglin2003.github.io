@@ -1,0 +1,48 @@
+body {
+    background-color: lightblue;
+}
+
+.btn1 {
+    background-color: darkslategray;
+    color: white;
+}
+
+.btn2 {
+    background-color: #6f806f;
+    color: white;
+}
+
+.form {
+    height: 20vh;
+}
+
+.myModal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.4);
+    width: 100%;
+    height: 100%;
+
+}
+
+.modal-content {
+    background-color: lightblue;
+    width: 80%;
+    margin: 20% 10% 0 10%;
+    padding: 20px;
+}
+
+.close-span {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.close-span:hover,
+.close-span:focus {
+  color: rgba(41, 107, 106, 0.91);
+  text-decoration: none;
+  cursor: pointer;
+}
