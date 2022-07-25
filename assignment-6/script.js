@@ -52,7 +52,7 @@ function  convertCelsiusToFahrenheit() {
 }
 
 convertCelsiusToFahrenheit();
-console.log("Please ener ' convertCelsiusToFahrenheit() ' if retry.");
+console.log("Please enter ' convertCelsiusToFahrenheit() ' if retry.");
 
 console.log("Part C");
 console.log("Please press the buttons on the page.")
