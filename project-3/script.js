@@ -1,10 +1,4 @@
 
-// need button for check and value inside user input
-// keep it in an object
-// function during game: checkIfCorrect, hintForNumber, changeScore, checkValidInput
-// function after ending: changeIfHighScore, changeImg, reset, generateNewRandomNumber
-
-
 // ------------ Set Up for interactive elements ----------- //
 
 // Game Start Button
@@ -39,7 +33,7 @@ const losingReport = document.querySelector(".losing-report");
 const tryAgainBtn = document.querySelector("#game-over button");
 
 const guessHistory = document.querySelector(".guess-list");
-// let guessList = [];
+let guessList = [];
 
 let score = 10;
 let randomNumber = Math.trunc(Math.random() * 100 +1);
@@ -59,11 +53,17 @@ function checkIfCorrect(userGuess, ranNum) {
     return userGuess === ranNum;
 }
 
+function updateGuessHistory() {
+    let tag = document.createElement("li");
+    let text = document.createTextNode(`${userInput.value}`);
+    tag.append(text);
+    guessHistory.appendChild(tag);
+}
+
 function guessWrong() {
     score -= 1;
     currentScore.innerHTML = score;
     let difference = randomNumber - Number(userInput.value)
-    console.log(difference)
 
     if (difference > 0) {
         if (difference <= 15) {hintParagraph.textContent = "You are guessing a little low (within 15)."}
@@ -76,11 +76,22 @@ function guessWrong() {
         else {hintParagraph.textContent = "You are guessing too high."}
     }
 
-    let tag = document.createElement("li");
-    let text = document.createTextNode(`${userInput.value}`);
-    tag.append(text);
-    guessHistory.appendChild(tag);
+    updateGuessHistory();
 
+}
+
+function checkSameNum(userGuess, guessList) {
+    if (guessList.length === 0) {
+        return false;
+    }
+    else {
+        for (let i = 0; i < guessList.length; i++) {
+            if (userGuess === guessList[i]) {
+                return true;
+            }
+        }
+
+    }
 }
 
 
@@ -109,6 +120,18 @@ function gameOver () {
 
 }
 
+function removeHistory () {
+    const ulLength = document.getElementsByTagName("li").length;
+
+    for (let i = 0; i < ulLength; i++) {
+        guessHistory.removeChild(guessHistory.lastChild);
+    }
+
+    // to empty the guess history stored in the data.
+    guessList = [];
+}
+
+
 function reset () {
     guessingCondition.style.display = "flex";
     scoreBoard.style.display = "block";
@@ -122,15 +145,9 @@ function reset () {
     score = 10;
     hintParagraph.textContent = "Guess a Number";
 
-    const ulLength = document.getElementsByTagName("li").length
-
-    for (let i = 0; i < ulLength; i++) {
-        guessHistory.removeChild(guessHistory.lastChild)
-    }
+    removeHistory();
 
 }
-
-
 
 // ------------ Get user input after check button clicked ----------- //
 
@@ -146,9 +163,17 @@ checkBtn.addEventListener("click", function() {
         }
         else {
             // if the player guess the wrong number then -1 for score, change hint message
-            guessWrong();
-            if (Number(currentScore.innerHTML) === 0) {
+            // return true if there is any same number
+            if (checkSameNum(userGuess, guessList)){
+                hintParagraph.textContent = "Hey! You used this number already!";
+            }
+            else if (Number(currentScore.innerHTML) === 0) {
                 gameOver();
+            }
+            else {
+                guessWrong();
+                guessList.push(userGuess);
+
             }
         }
     }
@@ -159,6 +184,7 @@ checkBtn.addEventListener("click", function() {
 resetBtn.addEventListener("click", reset);
 tryAgainBtn.addEventListener("click", reset);
 playAgainBtn.addEventListener("click", reset);
+
 
 
 
