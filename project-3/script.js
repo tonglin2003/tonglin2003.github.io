@@ -1,4 +1,3 @@
-
 // ------------ Set Up for interactive elements ----------- //
 
 // Game Start Button
@@ -94,6 +93,9 @@ function checkSameNum(userGuess, guessList) {
     }
 }
 
+function checkIfNumber(userGuess) {
+    return !isNaN(userGuess);
+}
 
 // ------- Winning and Losing Functions -------- //
 
@@ -153,30 +155,33 @@ function reset () {
 
 checkBtn.addEventListener("click", function() {
     let userGuess = Number(userInput.value);
-    if (userGuess > 100 || userGuess < 1) {
-        alert("You have entered a number out of range! Please enter a number between 1 and 100 (inclusive).")
-    }
-    else {
-        // if guess correctly then show the winning window!
-        if (checkIfCorrect(userGuess, randomNumber)) {
-            correctGuessed();
-        }
-        else {
-            // if the player guess the wrong number then -1 for score, change hint message
-            // return true if there is any same number
-            if (checkSameNum(userGuess, guessList)){
-                hintParagraph.textContent = "Hey! You used this number already!";
-            }
-            else if (Number(currentScore.innerHTML) === 0) {
-                gameOver();
+    console.log(userGuess);
+    if (checkIfNumber(userGuess)) {
+        if (userGuess > 100 || userGuess < 1) {
+            alert("You have entered a number out of range! Please enter a number between 1 and 100 (inclusive).")
+        } else {
+            // if guess correctly then show the winning window!
+            if (checkIfCorrect(userGuess, randomNumber)) {
+                correctGuessed();
             }
             else {
-                guessWrong();
-                guessList.push(userGuess);
-
+                // if the player guess the wrong number then -1 for score, change hint message
+                // return true if there is any same number
+                if (checkSameNum(userGuess, guessList)) {
+                    hintParagraph.textContent = "Hey! You used this number already!";
+                } else if (Number(currentScore.innerHTML) === 0) {
+                    gameOver();
+                } else {
+                    guessWrong();
+                    guessList.push(userGuess);
+                }
             }
         }
     }
+    else {
+        hintParagraph.textContent = "You can only enter number between 1 and 100.";
+        }
+
 })
 
 
@@ -184,7 +189,3 @@ checkBtn.addEventListener("click", function() {
 resetBtn.addEventListener("click", reset);
 tryAgainBtn.addEventListener("click", reset);
 playAgainBtn.addEventListener("click", reset);
-
-
-
-
