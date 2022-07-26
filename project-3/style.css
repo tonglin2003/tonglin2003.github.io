@@ -1,0 +1,220 @@
+body, html {
+    background-color: #FCF8E8;
+    overflow: scroll;
+
+}
+
+.background-words {
+    text-align: center;
+    font-size: 2vw;
+    padding: 3%;
+}
+.background-words h1 {
+    margin: 0;
+    color: #756334;
+}
+
+.background-words button {
+    margin: 5%;
+    width: 30%;
+    font-size: 5vw;
+    background: #ded390;
+    border-radius: 20px;
+    padding: 10px;
+    color: #483a18;
+}
+
+.background-words span {
+    color: #756334;
+}
+
+.background-words button:hover {
+    background: #c0b46e;
+}
+
+.play-direction {
+    margin: 10%;
+    color: #7a662e;
+}
+
+.modalGame {
+    display: none;
+    width: 80%;
+    background: #94B49F;
+    border-radius: 5px;
+    margin: 0 10% 10% 10%;
+    padding: 2% ;
+
+}
+
+.gameContent {
+    padding: 3%;
+    font-size: 2vw;
+    position: relative;
+
+}
+
+
+/*------ The Score Board and Reset Button--------- */
+
+
+.scoreBoard {
+    background: #f1edc2;
+    width: 20%;
+    border-radius: 10px;
+    border: 2px solid #676138;
+    text-align: center;
+    padding: 0 3% 0 3%;
+    color: #645220;
+}
+
+.gameContent button {
+    position: absolute;
+    right: 5%;
+    top: 20%;
+    background: #f1edc2;
+    padding: 2%;
+    border-radius: 10px;
+    font-size: 1.5vw;
+    color: #645220;
+    border: 2px solid #676138;
+}
+
+.gameContent tr {
+    padding-bottom: 5%;
+    text-align: center;
+}
+
+
+/*------ The Game Area With Cartoon--------- */
+
+.gameArea {
+    /*display: none;*/
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1% auto 5% auto;
+    background: #DFE8CC;
+    border-radius: 10px;
+    padding: 3%;
+}
+
+.gameArea input {
+    border-radius: 20px;
+    background: #FCF8E8;
+    width: 70%;
+    margin-bottom: 5%;
+    padding: 3%;
+    font-size: 2vw;
+    text-align: center;
+    }
+
+
+.gameArea label {
+    text-align: center;
+    width: 50%;
+}
+
+.gameArea button {
+    background: #577c67;
+    border-radius: 10px;
+    width: 50%;
+    height: 5vh;
+    color: #d5ecdc;
+    font-weight: bold;
+    font-size: 1vw;
+}
+
+.gameArea img {
+    width: 15%;
+    margin-bottom: 2%;
+}
+
+.gameArea p {
+    color: #3e5454;
+    font-size: 1.5vw;
+}
+
+
+/*------ Winning Result--------- */
+.resultReport {
+    display: none;
+    /*display: flex;*/
+    width: 70%;
+    flex-direction: column;
+    align-items: center;
+    background: #DFE8CC;
+    border-radius: 10px;
+    padding: 3%;
+    font-size: 1.5vw;
+    color: #645220;
+}
+
+#won-game {
+    margin: 10% auto 5% auto;
+    color: #3e5454;
+}
+
+#game-over {
+    margin: 1% auto 5% auto;
+    background: #fff6dc;
+    color: #645220;
+}
+
+#game-over button {
+    background: #a48f58;
+    color: #4b3807;
+    height: 5vh;
+}
+
+.resultReport img {
+    width: 40%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+}
+
+.resultReport h2, p, h3 {
+    margin-bottom: 0;
+}
+
+.resultReport button {
+    background: #577c67;
+    border-radius: 10px;
+    width: 50%;
+    height: 5vh;
+    color: #d5ecdc;
+    font-weight: bold;
+    font-size: 1vw;
+    margin: 4%;
+
+}
+
+/*------ Guess History --------- */
+.guess-history {
+    background: #f1edc2;
+    margin: auto;
+    width: 50%;
+    height: 22vh;
+    padding: 2% 5% 5% 5%;
+    border-radius: 20px;
+    font-size: 1.5vw;
+    overflow: scroll;
+    color: #726031;
+}
+
+.guess-history hr{
+    border: #a48f58 3px dashed;
+}
+
+
+
+
+/*------ Font --------- */
+p, span, td, button, li {
+    font-family: ubuntu, sans-serif;
+}
+
+h1, h2, h3, input{
+    font-family: Edu QLD Beginner, serif;
+}

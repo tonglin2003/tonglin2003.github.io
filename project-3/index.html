@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Project 3</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400&family=Edu+QLD+Beginner:wght@400;500;700&family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    <div class="background-words">
+        <h1>GUESS MY NUMBER</h1>
+        <span>Guess the number between 1 and 100</span>
+        <br>
+        <div class="play-direction">
+            <p>You have 10 chances to guess a number between 1 and 100 (inclusive).</p>
+            <p>Are you ready? Click the Play button below!</p>
+            <button type="button">Play</button>
+        </div>
+    </div>
+
+    <div class="modalGame">
+        <div class="gameContent">
+            <div class="scoreBoard">
+                <table>
+                    <tr>
+                        <td>Score: </td>
+                        <td class="current-score">10</td>
+                    </tr>
+                    <tr>
+                        <td>High Score: </td>
+                        <td class="highest-score">0</td>
+                    </tr>
+                </table>
+            </div>
+
+            <button type="button">Reset</button>
+        </div>
+
+
+        <div class="gameArea">
+            <img src="images/PngItem_6722690.png" alt="a person thinking">
+<!--            <img src="images/congratulation.gif" alt="a person thinking">-->
+            <label>
+                <input type="number" name="userGuess" placeholder="Enter the Number">
+                <br>
+                <button type="button">Check</button>
+            </label>
+            <p>Guess a Number</p>
+        </div>
+
+        <div class="resultReport" id="won-game">
+            <img src="images/congratulation.gif" alt="a person thinking">
+            <h2>Congratulation</h2>
+            <p class="winning-report1">Your guess was correct. xx is my secret number.</p>
+            <h3>Your Score: x</h3>
+            <p class="winning-best-score"><strong>Best: 3</strong></p>
+            <button type="button">Play Again</button>
+        </div>
+
+        <div class="resultReport" id="game-over">
+            <img src="images/gameover.png" alt="Game Over!">
+            <h2>Unfortunately You Lost the Game</h2>
+            <p>Don't give up and Try Again. You can win Next time.</p>
+            <h3 class="losing-report">Your Number was xx</h3>
+            <button type="button">Try Again</button>
+        </div>
+
+        <div class="guess-history">
+            <h2>Guess History: </h2>
+            <hr>
+            <ul class="guess-list">
+            </ul>
+        </div>
+
+    </div>
+
+
+
+    <script rel="script" src="script.js"></script>
+    </body>
+</html>
