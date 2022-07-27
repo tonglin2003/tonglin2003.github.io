@@ -1,3 +1,4 @@
+
 // ------------ Set Up for interactive elements ----------- //
 
 // Game Start Button
@@ -76,7 +77,7 @@ function guessWrong() {
     }
     else{
         if (difference >= -15) {hintParagraph.textContent = "You are guessing a little high (within 15)."}
-        if (difference >= 5) {hintParagraph.textContent = "You are guessing a little bit high, but very close! (within 5)."}
+        if (difference >= -5) {hintParagraph.textContent = "You are guessing a little bit high, but very close! (within 5)."}
         else {hintParagraph.textContent = "You are guessing too high."}
     }
 
@@ -190,9 +191,11 @@ checkBtn.addEventListener("click", function() {
                     hintParagraph.textContent = "Hey! You used this number already!";
                 }
 
-                else if (Number(currentScore.innerHTML) === 0) {
+                else if (Number(currentScore.innerHTML) === 1) {
                     // shows losing modal window when out of 10 attempts
                     gameOver();
+                    score -= 1;
+                    currentScore.innerHTML = score;
                 }
 
                 else {
@@ -216,3 +219,4 @@ checkBtn.addEventListener("click", function() {
 resetBtn.addEventListener("click", reset);
 tryAgainBtn.addEventListener("click", reset);
 playAgainBtn.addEventListener("click", reset);
+
