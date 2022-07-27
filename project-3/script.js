@@ -48,6 +48,7 @@ playBtn.addEventListener("click", function() {
 
 
 //----------- Functions ---------//
+
 function checkIfCorrect(userGuess, ranNum) {
     return userGuess === ranNum;
 }
@@ -59,11 +60,15 @@ function updateGuessHistory() {
     guessHistory.appendChild(tag);
 }
 
+// WHEN PLAYER GUESS THE WRONG NUMBER
+
 function guessWrong() {
+    // Reduce score and update score
     score -= 1;
     currentScore.innerHTML = score;
     let difference = randomNumber - Number(userInput.value)
 
+    // Change the hint based on the user input
     if (difference > 0) {
         if (difference <= 15) {hintParagraph.textContent = "You are guessing a little low (within 15)."}
         if (difference <= 5) {hintParagraph.textContent = "You are guessing a little bit low, but very close! (within 5)."}
@@ -75,11 +80,13 @@ function guessWrong() {
         else {hintParagraph.textContent = "You are guessing too high."}
     }
 
+    // Function of updating guess history
     updateGuessHistory();
 
 }
 
-function checkSameNum(userGuess, guessList) {
+// Returns True if the user guess is used, if not used return nothing
+function checkUsedNum(userGuess, guessList) {
     if (guessList.length === 0) {
         return false;
     }
@@ -89,16 +96,17 @@ function checkSameNum(userGuess, guessList) {
                 return true;
             }
         }
-
     }
 }
 
+// Returns true if userGuess is NaN (happens when the input is string)
 function checkIfNumber(userGuess) {
     return !isNaN(userGuess);
 }
 
 // ------- Winning and Losing Functions -------- //
 
+// If userGuess is correct, change modal window, change numbers on the modal
 function correctGuessed () {
     if (Number(currentScore.innerHTML)> Number(highestScore.innerHTML)){
         highestScore.innerHTML = currentScore.innerHTML;
@@ -110,18 +118,20 @@ function correctGuessed () {
     resetBtn.style.display = "none";
     winning.style.display = "flex";
     winPara.textContent = `Your guess was correct. ${randomNumber} is my secret number.`;
-    winCurrentScore.textContent = `Your Score: ${currentScore.textContent}`
+    winCurrentScore.textContent = `Your Score: ${currentScore.textContent}`;
 }
 
+//If user is out of chance, change modal window, then update losing report
 function gameOver () {
     guessingCondition.style.display = "none";
     losing.style.display = "flex";
     resetBtn.style.display = "none";
-    losingReport.textContent = `Your Number was ${randomNumber}`
+    losingReport.textContent = `Your Number was ${randomNumber}`;
 
 
 }
 
+// removes every number in guess history through a for loop
 function removeHistory () {
     const ulLength = document.getElementsByTagName("li").length;
 
@@ -135,18 +145,23 @@ function removeHistory () {
 
 
 function reset () {
+    // reset everything to original modal
     guessingCondition.style.display = "flex";
     scoreBoard.style.display = "block";
     resetBtn.style.display = "block";
     losing.style.display = "none";
     winning.style.display = "none";
+
     currentScore.innerHTML = "10";
     userInput.value = '';
+
+    // New Random Number and print it to console
     randomNumber = Math.trunc(Math.random() * 100 +1);
     console.log(randomNumber);
     score = 10;
     hintParagraph.textContent = "Guess a Number";
 
+    // removes every number in guess history through a for loop
     removeHistory();
 
 }
@@ -156,28 +171,41 @@ function reset () {
 checkBtn.addEventListener("click", function() {
     let userGuess = Number(userInput.value);
     console.log(userGuess);
+
     if (checkIfNumber(userGuess)) {
+        // USER ENTERED NUMBER IN WRONG RANGE
         if (userGuess > 100 || userGuess < 1) {
             alert("You have entered a number out of range! Please enter a number between 1 and 100 (inclusive).")
-        } else {
-            // if guess correctly then show the winning window!
+        }
+
+        else {
+            // if guess correctly then show the winning window
             if (checkIfCorrect(userGuess, randomNumber)) {
                 correctGuessed();
             }
+
             else {
                 // if the player guess the wrong number then -1 for score, change hint message
                 // return true if there is any same number
-                if (checkSameNum(userGuess, guessList)) {
+                if (checkUsedNum(userGuess, guessList)) {
                     hintParagraph.textContent = "Hey! You used this number already!";
-                } else if (Number(currentScore.innerHTML) === 0) {
+                }
+
+                else if (Number(currentScore.innerHTML) === 0) {
+                    // shows losing modal window when out of 10 attempts
                     gameOver();
-                } else {
+                }
+
+                else {
+                    // When player guess the wrong number, change hint, reduce points
                     guessWrong();
+                    // add to guess list to prevent repeating number in the future
                     guessList.push(userGuess);
                 }
             }
         }
     }
+
     else {
         hintParagraph.textContent = "You can only enter number between 1 and 100.";
         }
