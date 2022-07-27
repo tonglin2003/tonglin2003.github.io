@@ -170,7 +170,6 @@ function reset () {
 
 checkBtn.addEventListener("click", function() {
     let userGuess = Number(userInput.value);
-    console.log(userGuess);
 
     if (checkIfNumber(userGuess)) {
         // USER ENTERED NUMBER IN WRONG RANGE
