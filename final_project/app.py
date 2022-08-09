@@ -98,22 +98,22 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/checkout/diffuser1")
+@app.route("/checkout/p1")
 def checkout():
     return render_template("checkout.html", item_name=name[0], item_price=price[0])
-@app.route("/checkout/diffuser2")
+@app.route("/checkout/p2")
 def checkout1():
     return render_template("checkout.html", item_name=name[1], item_price=price[0])
-@app.route("/checkout/diffuser3")
+@app.route("/checkout/p3")
 def checkout2():
     return render_template("checkout.html", item_name=name[2], item_price=price[0])
-@app.route("/checkout/oil1")
+@app.route("/checkout/p4")
 def checkout3():
     return render_template("checkout.html", item_name=name[3], item_price=price[3])
-@app.route("/checkout/oil2")
+@app.route("/checkout/p5")
 def checkout4():
     return render_template("checkout.html", item_name=name[4], item_price=price[3])
-@app.route("/checkout/oil3")
+@app.route("/checkout/p6")
 def checkout5():
     return render_template("checkout.html", item_name=name[5], item_price=price[3])
 
